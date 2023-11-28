@@ -180,7 +180,7 @@ class DetailRankingField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         children: [
-          Expanded(flex: 1, child: MediumText(text: title)),
+          Expanded(flex: 2, child: MediumText(text: title)),
           Expanded(flex: 4, child: LargeText(text: content, size: 14))
         ],
       ),
@@ -209,7 +209,7 @@ class TopRankingWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Expanded(
-            flex: 4,
+            flex: 5,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -82,9 +82,7 @@ class DatabaseRepository {
       String downloadUrl = await storageTaskSnapshot.ref.getDownloadURL();
       final currentStudent = student;
       currentStudent.profileImageUrl = downloadUrl;
-
       await updateStudentData(student);
-
       print("url: $downloadUrl");
     } catch(e) {
       print("upload image error: ${e.toString()}");
