@@ -1,8 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:student_management/model/course.dart';
-import 'package:student_management/repository/course_repository.dart';
 import 'package:student_management/ui/component/text/large_text.dart';
+import 'package:student_management/ui/main/home/list_course.dart';
+import 'package:student_management/ui/main/home/list_news.dart';
+import 'package:student_management/utils/colors.dart';
 import 'package:student_management/utils/screen_util.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,12 +19,14 @@ class HomePage extends StatelessWidget {
     ];
 
     final availabilityHeight = ScreenUtils.getRemainingHeight(context);
-    double sliderHeight = availabilityHeight * 4 / 10;
     double courseHeight = availabilityHeight * 3 / 10;
 
     return Scaffold(
       appBar: AppBar(
         title: LargeText(text: "Home",size: 20, fontWeight: FontWeight.w700),
+        actions: const [
+          Padding(padding: EdgeInsets.only(right: 24),child: Icon(Icons.settings))
+        ],
       ),
       body: Container(
         width: double.infinity,
@@ -33,14 +36,12 @@ class HomePage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              height: sliderHeight,
+              height: courseHeight,
               width: double.infinity,
               child: CarouselSlider.builder(
                   itemCount: imageUrls.length,
                   itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
                     return Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16)),
                         child: ClipRRect(
@@ -62,66 +63,25 @@ class HomePage extends StatelessWidget {
                   )
               )
             ),
-            LargeText(text: "Courses"),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              margin: const EdgeInsets.symmetric(horizontal: 8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(24),
+                color: AppColors.infoBorder
+              ),
               height: courseHeight,
               width: double.infinity,
               child: const ListCourse(),
             ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              width: double.infinity,
+              height: courseHeight,
+              child: const ListNews(),
+            )
           ],
         ),
       ),
     );
-  }
-}
-
-class ListCourse extends StatelessWidget {
-
-  const ListCourse({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final availabilityHeight = ScreenUtils.getRemainingHeight(context);
-    double courseEdge = availabilityHeight / 5;
-
-    return StreamBuilder<List<Course>>(
-        stream: CourseRepository().courses,
-        builder: (context, snapshot) {
-          // return empty list if snapshot has no data
-          List<Course> courses = snapshot.hasData ? snapshot.data ?? [] : [];
-
-          return ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: courses.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      //todo: navigate to detail course screen
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 16),
-                      height: courseEdge,
-                      width: courseEdge,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(24),
-                        child: FadeInImage.assetNetwork(
-                            placeholder: "assets/image/img_loading.png",
-                            image:
-                                "https://intech.vietnamworks.com/media/gallery/2023/02/03/63dcc0393b26b.jpg",
-                        fit: BoxFit.cover),
-                      ),
-                    ),
-                  ),
-                  LargeText(text: courses[index].name)
-                ],
-              );
-            },
-          );
-        });
   }
 }

@@ -7,13 +7,17 @@ class LargeText extends StatelessWidget {
   double size;
   FontWeight fontWeight;
   Function()? onTap;
+  int maxLines;
+  TextOverflow overflow;
 
   LargeText({super.key,
   required this.text,
   this.color = const Color(0xFF4B485E),
   this.size = 16,
   this.fontWeight = FontWeight.w600,
-  this.onTap});
+  this.onTap,
+  this.maxLines = 1,
+  this.overflow = TextOverflow.ellipsis});
 
 
   @override

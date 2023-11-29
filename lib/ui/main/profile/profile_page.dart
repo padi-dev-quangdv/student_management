@@ -47,6 +47,9 @@ class _ProfilePageState extends State<ProfilePage> {
           return Scaffold(
             appBar: AppBar(
               title: LargeText(text: "Profile",size: 20, fontWeight: FontWeight.w700),
+              actions: const [
+                Padding(padding: EdgeInsets.only(right: 24),child: Icon(Icons.settings))
+              ],
             ),
             body: Container(
               height: double.infinity,

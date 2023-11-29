@@ -3,6 +3,8 @@ import 'package:student_management/model/student.dart';
 import 'package:student_management/repository/database_repository.dart';
 import 'package:student_management/ui/component/text/large_text.dart';
 import 'package:student_management/ui/component/text/medium_text.dart';
+import 'package:student_management/ui/main/rank/detail_ranking_field.dart';
+import 'package:student_management/ui/main/rank/top_ranking_widget.dart';
 import 'package:student_management/utils/colors.dart';
 
 class RankPage extends StatefulWidget {
@@ -28,6 +30,9 @@ class _RankPageState extends State<RankPage> {
           return Scaffold(
             appBar: AppBar(
               title: LargeText(text: "Score rankings", size: 20, fontWeight: FontWeight.w700),
+              actions: const [
+                Padding(padding: EdgeInsets.only(right: 24),child: Icon(Icons.settings))
+              ],
             ),
             body: Column(
               children: [
@@ -163,74 +168,6 @@ class _RankFieldState extends State<RankField> {
           ]
         ],
       ),
-    );
-  }
-}
-
-class DetailRankingField extends StatelessWidget {
-
-  final String title;
-  final String content;
-
-  const DetailRankingField({super.key, required this.title, required this.content});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        children: [
-          Expanded(flex: 2, child: MediumText(text: title)),
-          Expanded(flex: 4, child: LargeText(text: content, size: 14))
-        ],
-      ),
-    );
-  }
-}
-
-class TopRankingWidget extends StatelessWidget {
-
-  final Student currentStudent;
-  final int heightFlexRanking;
-  final String textNumberRanking;
-  final Color color;
-
-  const TopRankingWidget(
-      {super.key,
-      required this.currentStudent,
-      required this.heightFlexRanking,
-      required this.textNumberRanking,
-      required this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Expanded(
-            flex: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                LargeText(text: currentStudent.fullName),
-                LargeText(
-                    text: textNumberRanking,
-                    fontWeight: FontWeight.w900,
-                    color: color,
-                    size: 24),
-              ],
-            )),
-        Expanded(
-          flex: heightFlexRanking,
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16),
-            color: color,
-            child:  Center(child: LargeText(text: currentStudent.getSummary().toString())),
-          ),
-        )
-      ],
     );
   }
 }

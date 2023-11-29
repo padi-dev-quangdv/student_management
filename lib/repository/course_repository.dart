@@ -52,7 +52,6 @@ class CourseRepository {
 
   // get course list stream
   Stream<List<Course>> get courses {
-    print("here");
     return courseCollection.snapshots().map(_courseListFromSnapshot);
   }
 }

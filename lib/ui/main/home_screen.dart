@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:student_management/repository/auth_repository.dart';
 import 'package:student_management/ui/main/home/home_page.dart';
-import 'package:student_management/ui/main/home/profile_page.dart';
-import 'package:student_management/ui/main/home/rank_page.dart';
+import 'package:student_management/ui/main/profile/profile_page.dart';
+import 'package:student_management/ui/main/rank/rank_page.dart';
 import 'package:student_management/utils/colors.dart';
 
-import '../../../model/local_user.dart';
+import '../../model/local_user.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
