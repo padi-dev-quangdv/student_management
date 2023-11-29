@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:student_management/ui/component/text/large_text.dart';
 import 'package:student_management/ui/main/home/list_course.dart';
 import 'package:student_management/ui/main/home/list_news.dart';
+import 'package:student_management/ui/main/settings/settings_screen.dart';
 import 'package:student_management/utils/colors.dart';
 import 'package:student_management/utils/screen_util.dart';
 
@@ -24,8 +25,18 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: LargeText(text: "Home",size: 20, fontWeight: FontWeight.w700),
-        actions: const [
-          Padding(padding: EdgeInsets.only(right: 24),child: Icon(Icons.settings))
+        actions: [
+          GestureDetector(
+              onTap: () {
+                showModalBottomSheet(context: context, builder: (BuildContext context) {
+                      return SettingsScreen();
+                });
+              },
+              child: const Padding(
+                  padding: EdgeInsets.only(right: 24),
+                  child: Icon(Icons.settings)
+              )
+          )
         ],
       ),
       body: Container(

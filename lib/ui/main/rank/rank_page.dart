@@ -5,6 +5,7 @@ import 'package:student_management/ui/component/text/large_text.dart';
 import 'package:student_management/ui/component/text/medium_text.dart';
 import 'package:student_management/ui/main/rank/detail_ranking_field.dart';
 import 'package:student_management/ui/main/rank/top_ranking_widget.dart';
+import 'package:student_management/ui/main/settings/settings_screen.dart';
 import 'package:student_management/utils/colors.dart';
 
 class RankPage extends StatefulWidget {
@@ -30,8 +31,18 @@ class _RankPageState extends State<RankPage> {
           return Scaffold(
             appBar: AppBar(
               title: LargeText(text: "Score rankings", size: 20, fontWeight: FontWeight.w700),
-              actions: const [
-                Padding(padding: EdgeInsets.only(right: 24),child: Icon(Icons.settings))
+              actions: [
+                GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(context: context, builder: (BuildContext context) {
+                        return SettingsScreen();
+                      });
+                    },
+                    child: const Padding(
+                        padding: EdgeInsets.only(right: 24),
+                        child: Icon(Icons.settings)
+                    )
+                )
               ],
             ),
             body: Column(

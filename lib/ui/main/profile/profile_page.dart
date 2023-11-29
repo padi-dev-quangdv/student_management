@@ -11,6 +11,8 @@ import 'package:student_management/ui/component/text/large_text.dart';
 import 'package:student_management/ui/component/text/medium_text.dart';
 import 'package:student_management/utils/colors.dart';
 
+import '../settings/settings_screen.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -47,8 +49,18 @@ class _ProfilePageState extends State<ProfilePage> {
           return Scaffold(
             appBar: AppBar(
               title: LargeText(text: "Profile",size: 20, fontWeight: FontWeight.w700),
-              actions: const [
-                Padding(padding: EdgeInsets.only(right: 24),child: Icon(Icons.settings))
+              actions: [
+                GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(context: context, builder: (BuildContext context) {
+                        return SettingsScreen();
+                      });
+                    },
+                    child: const Padding(
+                        padding: EdgeInsets.only(right: 24),
+                        child: Icon(Icons.settings)
+                    )
+                )
               ],
             ),
             body: Container(
