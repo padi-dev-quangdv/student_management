@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:student_management/repository/auth_repository.dart';
+import 'package:student_management/ui/main/challenge/challenge_page.dart';
 import 'package:student_management/ui/main/home/home_page.dart';
 import 'package:student_management/ui/main/profile/profile_page.dart';
 import 'package:student_management/ui/main/rank/rank_page.dart';
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> pages = [
     const HomePage(),
+    const ChallengePage(),
     const RankPage(),
     const ProfilePage()
   ];
@@ -33,19 +35,23 @@ class _HomeScreenState extends State<HomeScreen> {
             currentPageIndex = index;
           });
         },
-        indicatorColor: AppColors.infoMain,
+        indicatorColor: null,
         selectedIndex: currentPageIndex,
         destinations: const [
           NavigationDestination(
-              selectedIcon: Icon(Icons.home),
+              selectedIcon: Icon(Icons.home_outlined, color: AppColors.infoMain),
               icon: Icon(Icons.home_outlined),
               label: "Home"),
           NavigationDestination(
-              selectedIcon: Icon(Icons.view_column),
+              selectedIcon: Icon(Icons.local_fire_department_outlined, color: AppColors.infoMain),
+              icon: Icon(Icons.local_fire_department_outlined),
+              label: "Challenge"),
+          NavigationDestination(
+              selectedIcon: Icon(Icons.view_column_outlined, color: AppColors.infoMain),
               icon: Icon(Icons.view_column_outlined),
               label: "Rank"),
           NavigationDestination(
-              selectedIcon: Icon(Icons.person),
+              selectedIcon: Icon(Icons.person_outline, color: AppColors.infoMain),
               icon: Icon(Icons.person_outline),
               label: "Profile"),
         ],
