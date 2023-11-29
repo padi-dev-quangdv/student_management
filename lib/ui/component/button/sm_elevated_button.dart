@@ -20,7 +20,7 @@ class SmElevatedButton extends StatelessWidget {
       mainAxisSize: isLargeButton ? MainAxisSize.max : MainAxisSize.min,
       children: [
         Expanded(
-          flex: 1,
+          flex: isLargeButton ? 1 : 0,
           child: ElevatedButton(
               onPressed: onPressed,
               style: ElevatedButton.styleFrom(

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:student_management/model/quiz.dart';
+import 'package:student_management/repository/quiz_repository.dart';
 import 'package:student_management/ui/component/text/large_text.dart';
+import 'package:student_management/ui/main/challenge/challenge_detail_screen.dart';
 import 'package:student_management/utils/colors.dart';
 
 import '../../../utils/screen_util.dart';
@@ -19,38 +22,90 @@ class _ChallengePageState extends State<ChallengePage> {
     double eachPartHeight = availabilityHeight * 3 / 10;
     double imageEdge = availabilityHeight * 2 / 10;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: LargeText(text: "Challenge"),
-      ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ChallengeCategory(
-                title: "Android",
-                containerHeight: eachPartHeight,
-                imagePath: "assets/image/jetpack_compose_logo.png",
-                imageEdge: imageEdge,
-                mainColor: Colors.green,
-              ),
-              ChallengeCategory(
-                title: "Flutter",
-                containerHeight: eachPartHeight,
-                imagePath: "assets/image/flutter_logo.png",
-                imageEdge: imageEdge,
-                mainColor: Colors.blue,
-              ),
-              ChallengeCategory(
-                title: "Swift",
-                containerHeight: eachPartHeight,
-                imagePath: "assets/image/swift_logo.png",
-                imageEdge: imageEdge,
-                mainColor: Colors.deepOrange,
-              )
-            ],
-          )),
+    return StreamBuilder(
+        stream: QuizRepository().quizList,
+        builder: (context, snapshot) {
+
+          List<Quiz> quizList = snapshot.hasData ? snapshot.data ?? [] : [];
+          print("fuck: ${quizList.length}");
+
+          return  Scaffold(
+            appBar: AppBar(
+              title: LargeText(text: "Challenge"),
+            ),
+            body: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ChallengeCategory(
+                      title: "Android",
+                      containerHeight: eachPartHeight,
+                      imagePath: "assets/image/jetpack_compose_logo.png",
+                      imageEdge: imageEdge,
+                      mainColor: Colors.green,
+                      onEasyClick: () {
+                        List<Quiz> easyAndroidList = quizList
+                            .where((quiz) => quiz.level =="easy" && quiz.typeQuiz == "android")
+                            .toList();
+                        quizList.shuffle();
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ChallengeDetailScreen(quizList: easyAndroidList,buttonColor: Colors.green);
+                        }));
+                      },
+                      onMediumClick: () {
+                        List<Quiz> mediumAndroidList = quizList
+                            .where((quiz) => quiz.level =="medium" && quiz.typeQuiz == "android")
+                            .toList();
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ChallengeDetailScreen(quizList: mediumAndroidList, buttonColor: Colors.green);
+                        }));
+                      },
+                      onHardClick: () {
+                        List<Quiz> hardAndroidList = quizList
+                            .where((quiz) => quiz.level =="hard" && quiz.typeQuiz == "android")
+                            .toList();
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ChallengeDetailScreen(quizList: hardAndroidList, buttonColor: Colors.green);
+                        }));
+                      },
+                    ),
+                    ChallengeCategory(
+                      title: "Flutter",
+                      containerHeight: eachPartHeight,
+                      imagePath: "assets/image/flutter_logo.png",
+                      imageEdge: imageEdge,
+                      mainColor: Colors.blue,
+                      onEasyClick: () {
+
+                      },
+                      onMediumClick: () {
+
+                      },
+                      onHardClick: () {
+
+                      },
+                    ),
+                    ChallengeCategory(
+                      title: "Swift",
+                      containerHeight: eachPartHeight,
+                      imagePath: "assets/image/swift_logo.png",
+                      imageEdge: imageEdge,
+                      mainColor: Colors.deepOrange,
+                      onEasyClick: () {
+
+                      },
+                      onMediumClick: () {
+
+                      },
+                      onHardClick: () {
+
+                      },
+                    )
+                  ],
+                )),
+          );
+        }
     );
   }
 }
@@ -62,6 +117,9 @@ class ChallengeCategory extends StatelessWidget {
   final String imagePath;
   final double imageEdge;
   final Color mainColor;
+  final Function()? onEasyClick;
+  final Function()? onMediumClick;
+  final Function()? onHardClick;
 
   const ChallengeCategory(
       {super.key,
@@ -69,7 +127,10 @@ class ChallengeCategory extends StatelessWidget {
       required this.containerHeight,
       required this.imagePath,
       required this.imageEdge,
-      required this.mainColor});
+      required this.mainColor,
+      required this.onEasyClick,
+      required this.onMediumClick,
+      required this.onHardClick});
 
   @override
   Widget build(BuildContext context) {
@@ -101,10 +162,16 @@ class ChallengeCategory extends StatelessWidget {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      ChallengeField(level: "Easy", textColor: mainColor),
-                      ChallengeField(level: "Medium", textColor: mainColor),
-                      ChallengeField(level: "Hard", textColor: mainColor),
-                    ],
+                        GestureDetector(
+                            onTap: onEasyClick,
+                            child: ChallengeField(level: "Easy", textColor: mainColor)),
+                        GestureDetector(
+                            onTap: onMediumClick,
+                            child: ChallengeField(level: "Medium", textColor: mainColor)),
+                        GestureDetector(
+                            onTap: onHardClick,
+                            child: ChallengeField(level: "Hard", textColor: mainColor)),
+                      ],
                   ),
                 )
               ],
