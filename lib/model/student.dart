@@ -8,6 +8,7 @@ class Student {
   double flutter;
   double swift;
   String profileImageUrl;
+  bool isAdmin;
 
   Student(
       {required this.id,
@@ -18,7 +19,8 @@ class Student {
       this.android = 0.0,
       this.flutter = 0.0,
       this.swift = 0.0,
-      this.profileImageUrl = ""});
+      this.profileImageUrl = "",
+      this.isAdmin = false});
 
   factory Student.defaultStudent() {
     return Student(

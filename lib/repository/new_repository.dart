@@ -11,7 +11,6 @@ class NewsRepository {
 
   Future updateNewsData(News news) async {
     return await newsCollection.doc(news.id).set({
-      "id": news.id,
       "title": news.title,
       "link": news.link,
       "duration": news.duration,

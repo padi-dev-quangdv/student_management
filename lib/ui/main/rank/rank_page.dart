@@ -86,8 +86,13 @@ class _RankPageState extends State<RankPage> {
                     child: ListView.builder(
                         itemCount: students.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return RankField(
-                              student: students[index], index: index);
+                          final currentStudent = students[index];
+                          if(currentStudent.isAdmin) {
+                            return const SizedBox();
+                          } else {
+                            return RankField(
+                                student: students[index], index: index);
+                          }
                         }),
                   ),
                 ),

@@ -100,7 +100,7 @@ class _ChallengeResultScreenState extends State<ChallengeResultScreen> {
               child: ListView.builder(
                   itemCount: resultList.length,
                   itemBuilder: (context, index) {
-                    return ChallengeResultField(currentItem: resultList[index]);
+                    return ChallengeResultField(currentItem: resultList[index], index: index);
                   }),
             )
           ],
@@ -113,8 +113,9 @@ class _ChallengeResultScreenState extends State<ChallengeResultScreen> {
 class ChallengeResultField extends StatelessWidget {
 
   final Quiz currentItem;
+  final int index;
 
-  const ChallengeResultField({super.key, required this.currentItem});
+  const ChallengeResultField({super.key, required this.currentItem, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +129,7 @@ class ChallengeResultField extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Flexible(child: LargeText(text: currentItem.question)),
+            Flexible(child: LargeText(text: "${index + 1}. ${currentItem.question}")),
             LargeText(text: textCorrect, color: isCorrect ? Colors.green : Colors.red)
           ],
         ),

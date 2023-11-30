@@ -16,7 +16,6 @@ class DatabaseRepository {
 
   Future updateStudentData(Student student) async {
     return await studentCollection.doc(student.id).set({
-      "id": student.id,
       "email" : student.email,
       "password" : student.password,
       "fullName" : student.fullName,
@@ -24,7 +23,8 @@ class DatabaseRepository {
       "android" : student.android,
       "flutter" : student.flutter,
       "swift" : student.swift,
-      "profileImageUrl": student.profileImageUrl
+      "profileImageUrl": student.profileImageUrl,
+      "isAdmin": false
     });
   }
 
@@ -40,7 +40,8 @@ class DatabaseRepository {
         android: data["android"],
         flutter: data["flutter"],
         swift: data["swift"],
-        profileImageUrl: data["profileImageUrl"]);
+        profileImageUrl: data["profileImageUrl"],
+        isAdmin: data["isAdmin"]);
   }
 
   // get user stream
@@ -61,7 +62,8 @@ class DatabaseRepository {
           android: data["android"],
           flutter: data["flutter"],
           swift: data["swift"],
-          profileImageUrl: data["profileImageUrl"]);
+          profileImageUrl: data["profileImageUrl"],
+          isAdmin: data["isAdmin"]);
     }).toList();
   }
 
