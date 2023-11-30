@@ -9,6 +9,17 @@ class NewsRepository {
 
   final CollectionReference newsCollection = FirebaseFirestore.instance.collection("news");
 
+  Future updateNewsData(News news) async {
+    return await newsCollection.doc(news.id).set({
+      "id": news.id,
+      "title": news.title,
+      "link": news.link,
+      "duration": news.duration,
+      "views": news.views,
+      "imageUrl": news.imageUrl
+    });
+  }
+
   // get new data from snapshot
   News _newsDataFromSnapshot(DocumentSnapshot snapshot) {
     Map<String, dynamic>? data = snapshot.data() as Map<String, dynamic>;

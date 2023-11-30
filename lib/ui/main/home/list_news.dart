@@ -10,6 +10,9 @@ class ListNews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    NewsRepository newsRepository = NewsRepository();
+
     return StreamBuilder(
         stream: NewsRepository().newsList,
         builder: (context, snapshot) {
@@ -21,9 +24,11 @@ class ListNews extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () async {
-
                   final Uri url = Uri.parse(newsList[index].link);
                   try {
+                    var currentItem = newsList[index];
+                    currentItem.views++;
+                    await newsRepository.updateNewsData(currentItem);
                     await launchUrl(url);
                   } catch(e) {
                     print("Error open url: $e");

@@ -27,6 +27,7 @@ class _ChallengePageState extends State<ChallengePage> {
         builder: (context, snapshot) {
 
           List<Quiz> quizList = snapshot.hasData ? snapshot.data ?? [] : [];
+          print("fucK: ${quizList.length}");
 
           return  Scaffold(
             appBar: AppBar(
