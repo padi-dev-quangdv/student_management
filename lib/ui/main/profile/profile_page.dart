@@ -6,7 +6,7 @@ import 'package:student_management/model/local_user.dart';
 import 'package:student_management/model/student.dart';
 import 'package:student_management/repository/auth_repository.dart';
 import 'package:student_management/repository/database_repository.dart';
-import 'package:student_management/ui/component/profile_field.dart';
+import 'package:student_management/ui/main/profile/profile_field.dart';
 import 'package:student_management/ui/component/text/large_text.dart';
 import 'package:student_management/ui/component/text/medium_text.dart';
 import 'package:student_management/utils/colors.dart';
@@ -36,7 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
       setState(() {
         _selectedImage = File(returnedImage!.path);
       });
-     databaseRepository.uploadImageToFirebase(_selectedImage!, student);
+      databaseRepository.uploadImageToFirebase(_selectedImage!, student);
     }
 
     return StreamBuilder(

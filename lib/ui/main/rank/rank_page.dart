@@ -166,9 +166,9 @@ class _RankFieldState extends State<RankField> {
                   children: [
                     DetailRankingField(title: "Name:", content: student.fullName),
                     DetailRankingField(title: "Class:", content: student.className),
-                    DetailRankingField(title: "Math:", content: student.android.toString()),
-                    DetailRankingField(title: "Physic:", content: student.flutter.toString()),
-                    DetailRankingField(title: "English:", content: student.swift.toString()),
+                    DetailRankingField(title: "Android:", content: student.android.toString()),
+                    DetailRankingField(title: "Flutter:", content: student.flutter.toString()),
+                    DetailRankingField(title: "Swift:", content: student.swift.toString()),
                   ],
                 ),
               ),

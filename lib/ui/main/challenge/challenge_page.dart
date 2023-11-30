@@ -27,7 +27,6 @@ class _ChallengePageState extends State<ChallengePage> {
         builder: (context, snapshot) {
 
           List<Quiz> quizList = snapshot.hasData ? snapshot.data ?? [] : [];
-          print("fuck: ${quizList.length}");
 
           return  Scaffold(
             appBar: AppBar(
@@ -88,13 +87,40 @@ class _ChallengePageState extends State<ChallengePage> {
                       imageEdge: imageEdge,
                       mainColor: Colors.blue,
                       onEasyClick: () {
-
+                        List<Quiz> easyFlutterList = quizList
+                            .where((quiz) => quiz.level =="easy" && quiz.typeQuiz == "flutter")
+                            .toList();
+                        easyFlutterList.shuffle();
+                        for (var quiz in easyFlutterList) {
+                          quiz.selectedAnswer = "";
+                        }
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ChallengeDetailScreen(quizList: easyFlutterList,buttonColor: Colors.blue);
+                        }));
                       },
                       onMediumClick: () {
-
+                        List<Quiz> mediumFlutterList = quizList
+                            .where((quiz) => quiz.level =="medium" && quiz.typeQuiz == "flutter")
+                            .toList();
+                        mediumFlutterList.shuffle();
+                        for (var quiz in mediumFlutterList) {
+                          quiz.selectedAnswer = "";
+                        }
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ChallengeDetailScreen(quizList: mediumFlutterList,buttonColor: Colors.blue);
+                        }));
                       },
                       onHardClick: () {
-
+                        List<Quiz> hardFlutterList = quizList
+                            .where((quiz) => quiz.level =="hard" && quiz.typeQuiz == "flutter")
+                            .toList();
+                        hardFlutterList.shuffle();
+                        for (var quiz in hardFlutterList) {
+                          quiz.selectedAnswer = "";
+                        }
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ChallengeDetailScreen(quizList: hardFlutterList,buttonColor: Colors.blue);
+                        }));
                       },
                     ),
                     ChallengeCategory(
