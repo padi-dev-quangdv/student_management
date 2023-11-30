@@ -48,7 +48,10 @@ class _ChallengePageState extends State<ChallengePage> {
                         List<Quiz> easyAndroidList = quizList
                             .where((quiz) => quiz.level =="easy" && quiz.typeQuiz == "android")
                             .toList();
-                        quizList.shuffle();
+                        easyAndroidList.shuffle();
+                        for (var quiz in easyAndroidList) {
+                          quiz.selectedAnswer = "";
+                        }
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
                           return ChallengeDetailScreen(quizList: easyAndroidList,buttonColor: Colors.green);
                         }));
@@ -57,6 +60,10 @@ class _ChallengePageState extends State<ChallengePage> {
                         List<Quiz> mediumAndroidList = quizList
                             .where((quiz) => quiz.level =="medium" && quiz.typeQuiz == "android")
                             .toList();
+                        mediumAndroidList.shuffle();
+                        for (var quiz in mediumAndroidList) {
+                          quiz.selectedAnswer = "";
+                        }
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
                           return ChallengeDetailScreen(quizList: mediumAndroidList, buttonColor: Colors.green);
                         }));
@@ -65,6 +72,10 @@ class _ChallengePageState extends State<ChallengePage> {
                         List<Quiz> hardAndroidList = quizList
                             .where((quiz) => quiz.level =="hard" && quiz.typeQuiz == "android")
                             .toList();
+                        hardAndroidList.shuffle();
+                        for (var quiz in hardAndroidList) {
+                          quiz.selectedAnswer = "";
+                        }
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
                           return ChallengeDetailScreen(quizList: hardAndroidList, buttonColor: Colors.green);
                         }));

@@ -21,9 +21,9 @@ class DatabaseRepository {
       "password" : student.password,
       "fullName" : student.fullName,
       "className" : student.className,
-      "math" : student.math,
-      "physic" : student.physic,
-      "english" : student.english,
+      "android" : student.android,
+      "flutter" : student.flutter,
+      "swift" : student.swift,
       "profileImageUrl": student.profileImageUrl
     });
   }
@@ -37,9 +37,9 @@ class DatabaseRepository {
         password: data["password"],
         fullName: data["fullName"],
         className: data["className"],
-        math: data["math"],
-        physic: data["physic"],
-        english: data["english"],
+        android: data["android"],
+        flutter: data["flutter"],
+        swift: data["swift"],
         profileImageUrl: data["profileImageUrl"]);
   }
 
@@ -58,9 +58,9 @@ class DatabaseRepository {
           password: data["password"],
           fullName: data["fullName"],
           className: data["className"],
-          math: data["math"],
-          physic: data["physic"],
-          english: data["english"],
+          android: data["android"],
+          flutter: data["flutter"],
+          swift: data["swift"],
           profileImageUrl: data["profileImageUrl"]);
     }).toList();
   }

@@ -58,24 +58,21 @@ class _RankPageState extends State<RankPage> {
                             child: TopRankingWidget(
                                 currentStudent: students[1],
                                 heightFlexRanking: 4,
-                                textNumberRanking: "2",
-                                color: AppColors.successHover)
+                                textNumberRanking: "2")
                         ),
                         Expanded(
                             flex: 1,
                             child: TopRankingWidget(
                                 currentStudent: students[0],
                                 heightFlexRanking: 6,
-                                textNumberRanking: "1",
-                                color: AppColors.dangerHover)
+                                textNumberRanking: "1")
                         ),
                         Expanded(
                             flex: 1,
                             child: TopRankingWidget(
                                 currentStudent: students[2],
                                 heightFlexRanking: 2,
-                                textNumberRanking: "3",
-                                color: AppColors.warningMain)
+                                textNumberRanking: "3")
                         ),
                       ],
                     ),
@@ -169,9 +166,9 @@ class _RankFieldState extends State<RankField> {
                   children: [
                     DetailRankingField(title: "Name:", content: student.fullName),
                     DetailRankingField(title: "Class:", content: student.className),
-                    DetailRankingField(title: "Math:", content: student.math.toString()),
-                    DetailRankingField(title: "Physic:", content: student.physic.toString()),
-                    DetailRankingField(title: "English:", content: student.english.toString()),
+                    DetailRankingField(title: "Math:", content: student.android.toString()),
+                    DetailRankingField(title: "Physic:", content: student.flutter.toString()),
+                    DetailRankingField(title: "English:", content: student.swift.toString()),
                   ],
                 ),
               ),

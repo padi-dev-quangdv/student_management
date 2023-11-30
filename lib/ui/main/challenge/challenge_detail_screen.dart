@@ -29,6 +29,23 @@ class _ChallengeDetailScreenState extends State<ChallengeDetailScreen> {
     bool isLastQuestion = selectedIndex == widget.quizList.length - 1;
     bool isFirstQuestion = selectedIndex == 0;
     String textButton = isLastQuestion ? "Submit" : "Next";
+
+    final level = widget.quizList.first.level;
+    double totalScore = 0;
+    double plusScore = 10;
+
+    switch (level) {
+      case "easy":
+        plusScore = 10;
+        break;
+      case "medium":
+        plusScore = 20;
+      case "hard":
+        plusScore = 30;
+        break;
+      default:
+        plusScore = 10;
+    }
     
     return Scaffold(
       appBar: AppBar(
@@ -117,8 +134,13 @@ class _ChallengeDetailScreenState extends State<ChallengeDetailScreen> {
                   child: ElevatedButton(
                       onPressed: () {
                         if (isLastQuestion) {
+                          for (var quiz in widget.quizList) {
+                            if(quiz.selectedAnswer.trim() == quiz.correctAnswer.trim()) {
+                              totalScore += plusScore;
+                            }
+                          }
                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                            return ChallengeResultScreen(quizListResult: widget.quizList);
+                            return ChallengeResultScreen(quizListResult: widget.quizList, totalScore: totalScore);
                           }));
                         } else {
                           setState(() {

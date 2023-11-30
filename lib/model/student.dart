@@ -4,9 +4,9 @@ class Student {
   String password;
   String fullName;
   String className;
-  double math;
-  double physic;
-  double english;
+  double android;
+  double flutter;
+  double swift;
   String profileImageUrl;
 
   Student(
@@ -15,9 +15,9 @@ class Student {
       required this.password,
       required this.fullName,
       this.className = "empty",
-      this.math = 0.0,
-      this.physic = 0.0,
-      this.english = 0.0,
+      this.android = 0.0,
+      this.flutter = 0.0,
+      this.swift = 0.0,
       this.profileImageUrl = ""});
 
   factory Student.defaultStudent() {
@@ -29,7 +29,7 @@ class Student {
   }
 
   double getSummary() {
-    return math + english + physic;
+    return android + swift + flutter;
   }
 
   @override

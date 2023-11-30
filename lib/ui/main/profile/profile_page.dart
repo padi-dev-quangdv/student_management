@@ -143,23 +143,17 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Column(
                           children: [
                             ProfileField(
-                                title: "Math",
-                                content: student.math.toString(),
-                                onTap: () {
-                                  //todo: navigate to detail screen
-                                }),
+                                title: "Android",
+                                content: student.android.toString()
+                            ),
                             ProfileField(
-                                title: "Physic",
-                                content: student.physic.toString(),
-                                onTap: () {
-                                  //todo: navigate to detail screen
-                                }),
+                                title: "Flutter",
+                                content: student.flutter.toString()
+                            ),
                             ProfileField(
-                                title: "English",
-                                content: student.english.toString(),
-                                onTap: () {
-                                  //todo: navigate to detail screen
-                                }),
+                                title: "Swift",
+                                content: student.swift.toString(),
+                            ),
                           ],
                         ),
                       ),

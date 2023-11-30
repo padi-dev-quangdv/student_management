@@ -7,17 +7,32 @@ class TopRankingWidget extends StatelessWidget {
   final Student currentStudent;
   final int heightFlexRanking;
   final String textNumberRanking;
-  final Color color;
 
   const TopRankingWidget(
       {super.key,
         required this.currentStudent,
         required this.heightFlexRanking,
-        required this.textNumberRanking,
-        required this.color});
+        required this.textNumberRanking});
 
   @override
   Widget build(BuildContext context) {
+
+    Color color;
+    switch(currentStudent.className.toLowerCase()) {
+      case "android":
+        color = Colors.green;
+        break;
+      case "flutter":
+        color = Colors.blue;
+        break;
+      case "swift":
+        color = Colors.deepOrange;
+        break;
+      default:
+        color = Colors.green;
+    }
+
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.end,

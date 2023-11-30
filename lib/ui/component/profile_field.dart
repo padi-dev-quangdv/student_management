@@ -5,9 +5,9 @@ import 'package:student_management/ui/component/text/medium_text.dart';
 class ProfileField extends StatelessWidget {
   final String title;
   final String content;
-  final Function() onTap;
+  Function()? onTap;
 
-  const ProfileField({super.key, required this.title, required this.content, required this.onTap});
+  ProfileField({super.key, required this.title, required this.content,  this.onTap});
 
   @override
   Widget build(BuildContext context) {
