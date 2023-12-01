@@ -18,6 +18,7 @@ class ListNews extends StatelessWidget {
         builder: (context, snapshot) {
           // return empty list if snapshot has no data
           List<News> newsList = snapshot.hasData ? snapshot.data ?? [] : [];
+          print("NewsList: ${newsList.length}");
 
           return ListView.builder(
             itemCount: newsList.length,

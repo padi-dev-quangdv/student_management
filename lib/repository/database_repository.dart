@@ -16,6 +16,7 @@ class DatabaseRepository {
 
   Future updateStudentData(Student student) async {
     return await studentCollection.doc(student.id).set({
+      "id": student.id,
       "email" : student.email,
       "password" : student.password,
       "fullName" : student.fullName,

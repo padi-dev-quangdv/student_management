@@ -11,6 +11,7 @@ class CourseRepository {
 
   Future updateCourseData(Course course) async {
     return await courseCollection.doc(course.id).set({
+      "id": course.id,
       "name": course.name,
       "link": course.link,
       "imageUrl": course.imageUrl,
