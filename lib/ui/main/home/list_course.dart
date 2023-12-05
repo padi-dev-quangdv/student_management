@@ -3,6 +3,7 @@ import 'package:student_management/model/course.dart';
 import 'package:student_management/repository/course_repository.dart';
 import 'package:student_management/ui/component/text/large_text.dart';
 import 'package:student_management/utils/screen_util.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ListCourse extends StatelessWidget {
 
@@ -28,8 +29,13 @@ class ListCourse extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      //todo: navigate to detail course screen
+                    onTap: () async {
+                      final Uri url = Uri.parse(courses[index].link);
+                      try {
+                        await launchUrl(url);
+                      } catch(e) {
+                        print("Error open url: $e");
+                      }
                     },
                     child: Container(
                       margin: const EdgeInsets.symmetric(horizontal: 16),
