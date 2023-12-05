@@ -55,4 +55,15 @@ class AuthRepository {
       return null;
     }
   }
+
+  // reset password
+  Future<bool> resetPassword({required String email}) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      return true;
+    } catch(e) {
+      print(e.toString());
+      return false;
+    }
+  }
 }
