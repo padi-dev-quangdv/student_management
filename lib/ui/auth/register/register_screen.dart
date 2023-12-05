@@ -5,6 +5,7 @@ import 'package:student_management/ui/component/button/sm_elevated_button.dart';
 import 'package:student_management/ui/component/loading.dart';
 import 'package:student_management/ui/component/text/medium_text.dart';
 import 'package:student_management/ui/component/text/small_text.dart';
+import 'package:student_management/ui/component/text_field/sm_auth_password_text_field.dart';
 import 'package:student_management/ui/component/text_field/sm_auth_text_field.dart';
 import 'package:student_management/utils/colors.dart';
 
@@ -78,7 +79,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             placeholder: "Email",
                             hint: "email@example.com"),
                         const SizedBox(height: 16),
-                        SmAuthTextField(
+                        SmAuthPasswordTextField(
                             onChanged: (value) {
                               setState(() {
                                 password = value;
@@ -93,7 +94,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             placeholder: "Password",
                             hint: "********"),
                         const SizedBox(height: 16),
-                        SmAuthTextField(
+                        SmAuthPasswordTextField(
                             onChanged: (value) {
                               setState(() {
                                 confirmPassword = value;

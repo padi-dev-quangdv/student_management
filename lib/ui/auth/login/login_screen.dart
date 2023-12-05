@@ -3,6 +3,7 @@ import 'package:student_management/repository/auth_repository.dart';
 import 'package:student_management/ui/auth/auth_header.dart';
 import 'package:student_management/ui/component/loading.dart';
 import 'package:student_management/ui/component/text/small_text.dart';
+import 'package:student_management/ui/component/text_field/sm_auth_password_text_field.dart';
 import '../../../utils/colors.dart';
 import '../../component/button/sm_elevated_button.dart';
 import '../../component/text/medium_text.dart';
@@ -63,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             placeholder: "Email",
                             hint: "email@example.com"),
                         const SizedBox(height: 24),
-                        SmAuthTextField(
+                        SmAuthPasswordTextField(
                             onChanged: (value) {
                               password = value;
                             },
@@ -73,9 +74,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               }
                               return null;
                             },
-                            isPasswordField: true,
                             placeholder: "Password",
-                            hint: "*********"),
+                            hint: "Password"),
                         const SizedBox(height: 16),
                       ])),
                   Align(
