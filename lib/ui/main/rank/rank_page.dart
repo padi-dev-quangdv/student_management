@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:student_management/model/student.dart';
 import 'package:student_management/repository/database_repository.dart';
+import 'package:student_management/ui/component/loading.dart';
 import 'package:student_management/ui/component/text/large_text.dart';
 import 'package:student_management/ui/component/text/medium_text.dart';
 import 'package:student_management/ui/main/rank/detail_ranking_field.dart';
@@ -23,12 +24,14 @@ class _RankPageState extends State<RankPage> {
         stream: DatabaseRepository().students,
         builder: (context, snapshot) {
           // return empty list if snapshot has no data
+          bool isWaiting = snapshot.connectionState == ConnectionState.waiting;
+
           List<Student> students = snapshot.hasData ? snapshot.data ?? [] : [];
           students.sort( (s1, s2) {
             return -s1.getSummary().compareTo(s2.getSummary());  // character "-": sort by descending
           });
 
-          return Scaffold(
+          return isWaiting ? const Loading() : Scaffold(
             appBar: AppBar(
               title: LargeText(text: "Score rankings", size: 20, fontWeight: FontWeight.w700),
               actions: [

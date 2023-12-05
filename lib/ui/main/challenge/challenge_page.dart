@@ -49,11 +49,12 @@ class _ChallengePageState extends State<ChallengePage> {
                             .where((quiz) => quiz.level =="easy" && quiz.typeQuiz == "android")
                             .toList();
                         easyAndroidList.shuffle();
-                        for (var quiz in easyAndroidList) {
+                        var firstFive = easyAndroidList.sublist(0,5);
+                        for (var quiz in firstFive) {
                           quiz.selectedAnswer = "";
                         }
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return ChallengeDetailScreen(quizList: easyAndroidList,buttonColor: Colors.green);
+                          return ChallengeDetailScreen(quizList: firstFive,buttonColor: Colors.green);
                         }));
                       },
                       onMediumClick: () {
@@ -61,11 +62,12 @@ class _ChallengePageState extends State<ChallengePage> {
                             .where((quiz) => quiz.level =="medium" && quiz.typeQuiz == "android")
                             .toList();
                         mediumAndroidList.shuffle();
-                        for (var quiz in mediumAndroidList) {
+                        var firstFive = mediumAndroidList.sublist(0,5);
+                        for (var quiz in firstFive) {
                           quiz.selectedAnswer = "";
                         }
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return ChallengeDetailScreen(quizList: mediumAndroidList, buttonColor: Colors.green);
+                          return ChallengeDetailScreen(quizList: firstFive, buttonColor: Colors.green);
                         }));
                       },
                       onHardClick: () {
@@ -73,11 +75,12 @@ class _ChallengePageState extends State<ChallengePage> {
                             .where((quiz) => quiz.level =="hard" && quiz.typeQuiz == "android")
                             .toList();
                         hardAndroidList.shuffle();
-                        for (var quiz in hardAndroidList) {
+                        var firstFive = hardAndroidList.sublist(0,5);
+                        for (var quiz in firstFive) {
                           quiz.selectedAnswer = "";
                         }
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return ChallengeDetailScreen(quizList: hardAndroidList, buttonColor: Colors.green);
+                          return ChallengeDetailScreen(quizList: firstFive, buttonColor: Colors.green);
                         }));
                       },
                     ),
@@ -92,11 +95,12 @@ class _ChallengePageState extends State<ChallengePage> {
                             .where((quiz) => quiz.level =="easy" && quiz.typeQuiz == "flutter")
                             .toList();
                         easyFlutterList.shuffle();
-                        for (var quiz in easyFlutterList) {
+                        var firstFive = easyFlutterList.sublist(0,5);
+                        for (var quiz in firstFive) {
                           quiz.selectedAnswer = "";
                         }
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return ChallengeDetailScreen(quizList: easyFlutterList,buttonColor: Colors.blue);
+                          return ChallengeDetailScreen(quizList: firstFive,buttonColor: Colors.blue);
                         }));
                       },
                       onMediumClick: () {
@@ -104,11 +108,12 @@ class _ChallengePageState extends State<ChallengePage> {
                             .where((quiz) => quiz.level =="medium" && quiz.typeQuiz == "flutter")
                             .toList();
                         mediumFlutterList.shuffle();
-                        for (var quiz in mediumFlutterList) {
+                        var firstFive = mediumFlutterList.sublist(0, 5);
+                        for (var quiz in firstFive) {
                           quiz.selectedAnswer = "";
                         }
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return ChallengeDetailScreen(quizList: mediumFlutterList,buttonColor: Colors.blue);
+                          return ChallengeDetailScreen(quizList: firstFive,buttonColor: Colors.blue);
                         }));
                       },
                       onHardClick: () {
@@ -116,11 +121,12 @@ class _ChallengePageState extends State<ChallengePage> {
                             .where((quiz) => quiz.level =="hard" && quiz.typeQuiz == "flutter")
                             .toList();
                         hardFlutterList.shuffle();
-                        for (var quiz in hardFlutterList) {
+                        var firstFive = hardFlutterList.sublist(0, 5);
+                        for (var quiz in firstFive) {
                           quiz.selectedAnswer = "";
                         }
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return ChallengeDetailScreen(quizList: hardFlutterList,buttonColor: Colors.blue);
+                          return ChallengeDetailScreen(quizList: firstFive,buttonColor: Colors.blue);
                         }));
                       },
                     ),
@@ -131,13 +137,43 @@ class _ChallengePageState extends State<ChallengePage> {
                       imageEdge: imageEdge,
                       mainColor: Colors.deepOrange,
                       onEasyClick: () {
-
+                        List<Quiz> easySwiftList = quizList
+                            .where((quiz) => quiz.level =="easy" && quiz.typeQuiz == "swift")
+                            .toList();
+                        easySwiftList.shuffle();
+                        var firstFive = easySwiftList.sublist(0,5);
+                        for (var quiz in firstFive) {
+                          quiz.selectedAnswer = "";
+                        }
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ChallengeDetailScreen(quizList: firstFive,buttonColor: Colors.deepOrange);
+                        }));
                       },
                       onMediumClick: () {
-
+                        List<Quiz> mediumSwiftList = quizList
+                            .where((quiz) => quiz.level =="medium" && quiz.typeQuiz == "swift")
+                            .toList();
+                        mediumSwiftList.shuffle();
+                        var firstFive = mediumSwiftList.sublist(0,5);
+                        for (var quiz in firstFive) {
+                          quiz.selectedAnswer = "";
+                        }
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ChallengeDetailScreen(quizList: firstFive,buttonColor: Colors.deepOrange);
+                        }));
                       },
                       onHardClick: () {
-
+                        List<Quiz> hardSwiftList = quizList
+                            .where((quiz) => quiz.level =="hard" && quiz.typeQuiz == "swift")
+                            .toList();
+                        hardSwiftList.shuffle();
+                        var firstFive = hardSwiftList.sublist(0,5);
+                        for (var quiz in firstFive) {
+                          quiz.selectedAnswer = "";
+                        }
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return ChallengeDetailScreen(quizList: firstFive,buttonColor: Colors.deepOrange);
+                        }));
                       },
                     )
                   ],
